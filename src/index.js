@@ -225,7 +225,7 @@ Onboarding.propTypes = {
 
 Onboarding.defaultProps = {
   bottomBarHighlight: true,
-  bottomBarHeight: 60,
+  bottomBarHeight: 80,
   controlStatusBar: true,
   showSkip: true,
   showNext: true,

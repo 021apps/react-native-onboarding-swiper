@@ -10,29 +10,25 @@ const Pagination = ({
   isLight,
   bottomBarHeight,
   controlStatusBar,
-  showDone,
   onDone,
   DoneButtonComponent,
   DotComponent,
 }) => {
   const isLastPage = currentPage + 1 === numPages;
 
-  const DoneButtonFinal = showDone &&
-    isLastPage && (
-      <DoneButtonComponent
-        isLight={isLight}
-        onPress={() => {
-          if (typeof onDone === 'function') {
-            if (controlStatusBar) {
-              StatusBar.setBarStyle('default', true);
-            }
-            onDone();
+  const doneButtonFinal = isLastPage ? (
+    <DoneButtonComponent
+      isLight={isLight}
+      onPress={() => {
+        if (typeof onDone === 'function') {
+          if (controlStatusBar) {
+            StatusBar.setBarStyle('default', true);
           }
-        }}
-      />
-    );
-
-  const renderDots = !isLastPage && (
+          onDone();
+        }
+      }}
+    />
+  ) : (
     <Dots
       isLight={isLight}
       numPages={numPages}
@@ -49,8 +45,7 @@ const Pagination = ({
         ...styles.container,
       }}
     >
-      {renderDots}
-      <View style={styles.buttonRight}>{DoneButtonFinal}</View>
+      {doneButtonFinal}
     </View>
   );
 };
@@ -82,18 +77,14 @@ Pagination.propTypes = {
 
 const styles = {
   container: {
-    paddingHorizontal: 0,
+    marginBottom: 8,
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
   },
   buttonRight: {
     width: 200,
-    flexShrink: 1,
     alignItems: 'center',
-  },
-  dots: {
-    flexShrink: 0,
   },
 };
 
