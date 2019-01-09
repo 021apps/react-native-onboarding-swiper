@@ -39,7 +39,7 @@ class DoneButton extends React.Component {
 const styles = StyleSheet.create({
   buttonContainer: {
     borderRadius: 10,
-    backgroundColor: '#011627',
+    backgroundColor: '#4549D1',
     width: 300,
     height: 40,
     justifyContent: 'center',
